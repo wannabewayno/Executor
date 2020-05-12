@@ -1,0 +1,28 @@
+{
+  "name": "executor",
+  "version": "1.0.0",
+  "description": "The Employee managment CLI",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wannabewayno/Executor.git"
+  },
+  "author": "Wayne Griffiths",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/wannabewayno/Executor/issues"
+  },
+  "homepage": "https://github.com/wannabewayno/Executor#readme",
+  "dependencies": {
+    "ascii-tree": "^0.3.0",
+    "chalk": "^4.0.0",
+    "console.table": "^0.10.0",
+    "inquirer": "^7.1.0",
+    "jest": "^26.0.1",
+    "rxjs": "^6.5.5"
+  }
+}
