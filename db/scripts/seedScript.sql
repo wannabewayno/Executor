@@ -1,6 +1,39 @@
-/* seeds data to mySQL */
+DROP DATABASE IF EXISTS employee_db;
+
+CREATE DATABASE employee_db;
 
 USE employee_db;
+
+CREATE TABLE department (
+department_id INT AUTO_INCREMENT,
+department_name VARCHAR(30) NOT NULL,
+PRIMARY KEY(department_id)
+);
+
+CREATE TABLE employee_role (
+role_id INT AUTO_INCREMENT,
+title VARCHAR(30) NOT NULL,
+salary VARCHAR(30) NOT NULL,
+department_id INT NOT NULL,
+PRIMARY KEY(role_id),
+FOREIGN KEY(department_id) REFERENCES department(department_id)
+);
+
+CREATE TABLE employee (
+id INT AUTO_INCREMENT,
+first_name VARCHAR(30) NOT NULL,
+last_name VARCHAR(30) NOT NULL,
+role_id INT NOT NULL,
+manager_id INT,
+PRIMARY KEY(id),
+FOREIGN KEY(role_id) REFERENCES employee_role(role_id)
+);
+
+CREATE TABLE manager (
+id INT NOT NULL, 
+manager_name VARCHAR(30),
+PRIMARY KEY(id)
+);
 
 INSERT INTO department (department_name)
 VALUES  ('Sales'),
@@ -50,11 +83,11 @@ VALUES  ('Sales Manager',           105000, (SELECT department_id FROM departmen
         ('Evangelist',              210000, (SELECT department_id FROM department WHERE department_name = 'UX'          ));
 
 
-INSERT INTO employee (first_name, last_name, role_id, manager_id)
+INSERT INTO employee (first_name, last_name, role_id)
 VALUES  ('Louis','Corban',      (SELECT role_id FROM employee_role WHERE title = 'Cheif Engineer'       )),
         ('Marie','Toussaint',   (SELECT role_id FROM employee_role WHERE title = 'IT Manager'           )),
         ('Martin','Glover',     (SELECT role_id FROM employee_role WHERE title = 'R&D Engineer'         )),
-        ('Bernard','Kretzmann', (SELECT role_id FROM employee_role WHERE title = 'Back-End Developer'   )),
+        ('Bernard','Kretzmann', (SELECT role_id FROM employee_role WHERE title = 'Electrical Engineer'  )),
         ('Karl','Anschutz',     (SELECT role_id FROM employee_role WHERE title = 'Designer'             )),
         ('Isaac','Logique',     (SELECT role_id FROM employee_role WHERE title = 'UX Manager'           )),
         ('Ivan','Gutavistk',    (SELECT role_id FROM employee_role WHERE title = 'Evangelist'           )),
@@ -68,7 +101,7 @@ VALUES  ('Louis','Corban',      (SELECT role_id FROM employee_role WHERE title =
         ('Cameron','Marshall',  (SELECT role_id FROM employee_role WHERE title = 'Specialist'           )),
         ('Frank','Moody',       (SELECT role_id FROM employee_role WHERE title = 'Assocaite'            )),
         ('Rick','Peters',       (SELECT role_id FROM employee_role WHERE title = 'Associate'            )),
-        ('Rodriguez','Corban',  (SELECT role_id FROM employee_role WHERE title = 'Electrical Engineer'  )),
+        ('Rodriguez','Corban',  (SELECT role_id FROM employee_role WHERE title = 'Back-End Developer'  	)),
         ('Gabriella','Corban',  (SELECT role_id FROM employee_role WHERE title = 'Mechanical Engineer'  )),
         ('Antonio','Carmen',    (SELECT role_id FROM employee_role WHERE title = 'QC Engineer'          )),
         ('Jesse','Smith',       (SELECT role_id FROM employee_role WHERE title = 'Sales Consultant'     )),

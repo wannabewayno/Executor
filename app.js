@@ -12,7 +12,7 @@ const promptQueue = new rxjs.Subject();
 
 inquirer.prompt(promptQueue).ui.process.subscribe(async answer => {
 
-    await engine[answer.answer]();
+    await engine[answer.answer.function](answer.answer.variable);
     await engine.refresh();
     promptQueue.next(engine.next());
 
