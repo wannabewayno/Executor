@@ -5,7 +5,7 @@ const inquirer = require('inquirer');
 const engine = require('./lib/engine.js'); //App logic
 
 //Start fetching data from mySQL display welcome/loading screen
-console.log('Executor loaidng screen');
+console.log('Executor loading screen');
 engine.refresh();
 
 const promptQueue = new rxjs.Subject();
@@ -13,9 +13,8 @@ const promptQueue = new rxjs.Subject();
 inquirer.prompt(promptQueue).ui.process.subscribe(async answer => {
 
     await engine[answer.answer.function](answer.answer.variable);
-    await engine.refresh();
-    promptQueue.next(engine.next());
 
+    promptQueue.next(engine.next());
 },
 error => {throw new Error(error)},
 complete => console.log("all done")
@@ -23,5 +22,3 @@ complete => console.log("all done")
 
 // kicks off the prompts
 promptQueue.next(engine.next());
-
-// console.log(chalk.blue(chalk.bgCyanBright('hello world')));
