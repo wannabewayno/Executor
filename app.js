@@ -1,6 +1,7 @@
 //Dependencies
 const rxjs = require('rxjs');
 const inquirer = require('inquirer');
+const prompts = require('./lib/prompts.js');
 //Custom js
 const engine = require('./lib/engine.js'); //App logic
 
@@ -13,7 +14,7 @@ const promptQueue = new rxjs.Subject();
 inquirer.prompt(promptQueue).ui.process.subscribe(async answer => {
 
     await engine[answer.answer.function](answer.answer.variable);
-
+    
     promptQueue.next(engine.next());
 },
 error => {throw new Error(error)},
