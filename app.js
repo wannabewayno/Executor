@@ -25,17 +25,20 @@ const engine = require('./lib/engine.js'); //App logic
 
 engine.refresh();
 
+//creates our promptQueue Subject to push prompts into at anytime
 const promptQueue = new rxjs.Subject();
 
+//Inquirer prompt module loading in the promptQueue
 inquirer.prompt(promptQueue).ui.process.subscribe(async answer => {
 
-    await engine[answer.answer.function](answer.answer.variable);
+        await engine[answer.answer.function](answer.answer.variable);
 
-    promptQueue.next(engine.next());
-},
-error => {throw new Error(error)},
-complete => console.log("all done")
+        //calls the next prompt in the promptQueue
+        promptQueue.next(engine.next());
+    },
+    error => {throw new Error(error)},
+    complete => console.log("all done")
 )
 
-// kicks off the prompts
+// kicks off the prompts by calling the first prompt
 promptQueue.next(engine.next());
