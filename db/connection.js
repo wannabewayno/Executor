@@ -1,14 +1,10 @@
 const mysql = require('mysql');
+const config = require('./../config/config.js');
+
+// creates a connection to the database using the config object in config.js
+const connection = mysql.createConnection(config);
+
 // connects to the database
-const connectionConfig = {
-    host:'localhost',
-    user:'root',
-    password:'root',
-    database:'employee_db'
-};
-
-const connection = mysql.createConnection(connectionConfig);
-
 connection.connect(error => {
     if (error) {
         throw new Error(`Error with connection ${error.stack}`)
@@ -17,4 +13,5 @@ connection.connect(error => {
     console.log(`connected as id:${connection.threadId}`);
 });
 
+// export this connection to use elsewhere
 module.exports = connection;
