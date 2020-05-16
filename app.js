@@ -1,4 +1,3 @@
-//TODO load up band banner first
 const banner = require('./assets/logo/ascii-banner.js');
 console.log(banner); 
 
@@ -16,14 +15,7 @@ console.log(banner);
 //Dependencies
 const rxjs = require('rxjs');
 const inquirer = require('inquirer');
-const prompts = require('./lib/prompts/prompts.js');
-//Custom js
 const engine = require('./lib/engine.js'); //App logic
-
-//Start fetching data from mySQL display welcome/loading screen
-//TODO need to do a sql query and load the first instance of our data upon start up
-
-engine.refresh();
 
 //creates our promptQueue Subject to push prompts into at anytime
 const promptQueue = new rxjs.Subject();

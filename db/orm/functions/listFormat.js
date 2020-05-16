@@ -4,9 +4,10 @@ const listFormat = (dbResult,formatOptions) => {
     const { displayColumns, valueColumns, callbackName } = formatOptions
 
     const choices = dbResult.map(rowObj => {
-
+        const name = displayColumns.map(key => rowObj[key]).join(' ')
+        rowObj.name = name;
         return {
-            name: displayColumns.map(key => rowObj[key]).join(' '),
+            name: name,
             value:{
                 function:callbackName,
                 variable:rowObj

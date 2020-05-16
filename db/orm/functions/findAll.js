@@ -1,7 +1,7 @@
 const connection = require('./../../connection.js');
 
-const findAll = (tableName,...columnNames) => {
-
+const findAll = (queryObj) => {
+    let { tableName, columnNames } = queryObj;
     return new Promise ((resolve,reject) => {
         if (columnNames.length === 0) {
             columnNames = '*'
@@ -17,7 +17,7 @@ const findAll = (tableName,...columnNames) => {
 
             if (error) reject(error);
             
-            resolve(choices);
+            resolve(results);
         });
     });
 }
