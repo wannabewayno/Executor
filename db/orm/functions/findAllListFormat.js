@@ -20,6 +20,11 @@ const findAllListFormat = (dbInfo) => {
 
             if (error) reject(error);
 
+            results = results.map(rowObj => {
+                rowObj.tableName = tableName;
+                return rowObj;
+            });
+
             //prepares columnNames titles
             columnNames = columnNames.split(',')
             
