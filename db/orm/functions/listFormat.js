@@ -9,8 +9,8 @@ const listFormat = (dbResult,formatOptions) => {
         return {
             name: name,
             value:{
-                function:callbackName,
-                variable:rowObj
+                function:'switch',
+                variable:{ head:callbackName, body:rowObj }
             }
         }
     });
