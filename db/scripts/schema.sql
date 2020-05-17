@@ -30,7 +30,7 @@ FOREIGN KEY(role_id) REFERENCES employee_role(role_id)
 );
 
 CREATE TABLE manager (
-id INT NOT NULL, 
+manager_id INT NOT NULL, 
 manager_name VARCHAR(30),
-PRIMARY KEY(id)
+PRIMARY KEY(manager_id)
 );

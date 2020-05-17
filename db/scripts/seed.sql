@@ -1,3 +1,5 @@
+
+
 /* seeds data to mySQL */
 
 USE employee_db;
@@ -50,7 +52,7 @@ VALUES  ('Sales Manager',           105000, (SELECT department_id FROM departmen
         ('Evangelist',              210000, (SELECT department_id FROM department WHERE department_name = 'UX'          ));
 
 
-INSERT INTO employee (first_name, last_name, role_id, manager_id)
+INSERT INTO employee (first_name, last_name, role_id)
 VALUES  ('Louis','Corban',      (SELECT role_id FROM employee_role WHERE title = 'Cheif Engineer'       )),
         ('Marie','Toussaint',   (SELECT role_id FROM employee_role WHERE title = 'IT Manager'           )),
         ('Martin','Glover',     (SELECT role_id FROM employee_role WHERE title = 'R&D Engineer'         )),

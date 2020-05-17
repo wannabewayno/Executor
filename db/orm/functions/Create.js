@@ -10,7 +10,7 @@ const Create = (queryObj) => {
         } else {
             columnNames = columnNames.join(',').trim();
         }
-        // values first_name,last_name,role(needs to be an sql query) will need to select that,
+        // values first_name,last_name,role(needs to be an sql query) will need to select that, then pick a manager, again a query.
         let statement = 'INSERT INTO ?? VALUES ??';
         statement = statement.replace('??',columnNames);
         statement = statement.replace('??',tableName);
