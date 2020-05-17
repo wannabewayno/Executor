@@ -5,7 +5,7 @@ const findAllGroupBy = (groupBy) => {
     return new Promise ((resolve,reject) => {
         groupBy = groupBy.join(',').trim();
         
-        let statement = 'SELECT employee.id, first_name, last_name, title, salary, department_name FROM employee INNER JOIN employee_role ON employee.role_id = employee_role.id INNER JOIN department ON employee_role.department_id = department.id ORDER BY ?? DESC;';
+        let statement = 'SELECT employee.id, first_name, last_name, title, salary, department_name FROM employee INNER JOIN employee_role USING (role_id) INNER JOIN department USING (department_id) ORDER BY ?? DESC;';
         statement = statement.replace('??',`${groupBy}`);
         console.log(statement);
 

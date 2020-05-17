@@ -1,7 +1,7 @@
 const listFormat = require('./listFormat');
 const connection = require('./../../connection.js');
 
-const findAllListFormat = (dbInfo) => {
+const findAllListFormat = (dbInfo,item) => {
  
     let { tableName, columnNames, formatOptions } = dbInfo
 
@@ -24,12 +24,9 @@ const findAllListFormat = (dbInfo) => {
                 rowObj.tableName = tableName;
                 return rowObj;
             });
-
-            //prepares columnNames titles
-            columnNames = columnNames.split(',')
             
             //maps results to a inquirer choice array
-            const choices = listFormat(results,formatOptions);
+            const choices = listFormat(results,formatOptions,item);
 
             //return these results to inquirer
             resolve(choices);

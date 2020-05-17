@@ -7,5 +7,7 @@ orm.findAllGroupBy      = require('./functions/findAllGroupBy.js');
 orm.Delete              = require('./functions/Delete.js');
 orm.Update              = require('./functions/Update.js');
 orm.Create              = require('./functions/Create.js');
+orm.findBy              = require('./functions/findBy.js');
+orm.viewTable           = require('./functions/viewTable.js');
 
 module.exports = orm;
